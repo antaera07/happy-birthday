@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Birthday Quest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/game.css">
+</head>
+
+<body>
+<main>
+
+    <!-- Welcome Screen -->
+    <section class="welcome-screen" id="welcome-screen">
+        <div class="welcome-content">
+            <p class="game-label">A GIFT IS WAITING FOR YOU</p>
+            <div class="gift-crystal">
+                <img src="assets/ui/crystal.png" alt="">
+                <span class="lock-badge">🔒</span>
+            </div>
+            <h1>HAPPY BIRTHDAY</h1>
+            <p class="game-description">
+                I have something special for you hehe <3
+                I hope you like this game hehe mwah baby! Find the 24 memories and see what I have for you!
+            </p>
+            <button id="start-button">FIND THE KEY</button>
+            <p class="footer-text">🔒 SEALED &nbsp;·&nbsp; 0 / 24 MEMORIES FOUND</p>
+        </div>
+    </section>
+
+    <!-- Character Selection Screen -->
+    <section class="character-screen" id="character-screen">
+        <div class="character-content">
+            <p class="game-label">LET'S GO!!</p>
+            <h1>CHOOSE YOUR CHARACTER :P</h1>
+            <p class="game-description">
+                Who will you be today? p.s. I love you, my baby💖
+            </p>
+
+            <div class="character-grid">
+                <div class="character-card">
+                    <img class="card-sprite" src="assets/photos/piercings-baddie.jpg" alt="">
+                    <h2>Piercings Baddie</h2>
+                    <p>ooh so smeggsey🫪</p>
+                </div>
+                <div class="character-card">
+                    <img class="card-sprite" src="assets/photos/diva.jpg" alt="">
+                    <h2>Thee Diva</h2>
+                    <p>so slay my baby🫦</p>
+                </div>
+                <div class="character-card">
+                    <img class="card-sprite" src="assets/photos/mr-dumbass.jpg" alt="">
+                    <h2>Mr. Dumbass</h2>
+                    <p>dumbass but MY dumbass😚</p>
+                </div>
+                <div class="character-card">
+                    <img class="card-sprite" src="assets/photos/photo17.jpg" alt="">
+                    <h2>Lil Cutie Patootie</h2>
+                    <p>myyy childdd🥹</p>
+                </div>
+            </div>
+
+            <button id="continue-button" disabled>CONTINUE</button>
+        </div>
+    </section>
+
+    <!-- Game -->
+    <section class="game-screen" id="game-screen">
+        <div class="stage" id="stage">
+            <div class="forest-background" id="forest-bg"></div>
+            <div class="game-world" id="game-world">
+                <div class="crystal-glow" id="crystal-glow"><div class="rays"></div><div class="halo"></div></div>
+                <div class="collectibles-container" id="collectibles-container"></div>
+                <div class="exits-container" id="exits-container"></div>
+                <div class="player" id="player"><img class="sprite" id="player-sprite" alt=""></div>
+                <div class="guide" id="guide">
+                    <img class="sprite" id="guide-sprite" alt="">
+                    <div class="ambient-dialogue" id="ambient-dialogue"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Visual-novel dialogue: guide on the left, him on the right -->
+        <div class="vn" id="vn">
+            <div class="vn-catch" id="vn-catch"></div>
+            <div class="vn-row">
+                <img class="vn-portrait vn-left" id="vn-guide" alt="">
+                <div class="vn-box" id="vn-box">
+                    <div class="vn-name" id="vn-name"></div>
+                    <p class="vn-text" id="vn-text"></p>
+                    <span class="vn-next" id="vn-next">▼</span>
+                </div>
+                <img class="vn-portrait vn-right" id="vn-player" alt="">
+            </div>
+        </div>
+
+        <!-- A memory: the photo zooms in with a letter tucked behind it -->
+        <div class="memory-card" id="memory-card">
+            <div class="mc-stage" id="mc-stage">
+                <div class="mc-letter" id="mc-letter">
+                    <div class="mc-paper">
+                        <h3 class="mc-title" id="mc-title"></h3>
+                        <div class="mc-text" id="mc-text"></div>
+                    </div>
+                </div>
+                <div class="mc-polaroid" id="mc-polaroid">
+                    <div class="mc-photo" id="mc-photo"><img id="mc-img" alt=""></div>
+                    <img class="mc-frame" id="mc-frame" alt="">
+                </div>
+            </div>
+            <div class="mc-footer">
+                <span class="mc-count" id="mc-count"></span>
+                <button class="mc-continue" id="mc-continue">Continue ♡</button>
+            </div>
+        </div>
+
+        <div class="fade-overlay" id="fade-overlay"></div>
+
+        <div class="mobile-controls" id="mobile-controls">
+            <button class="control-btn" id="upleft-btn">↖</button>
+            <button class="control-btn" id="up-btn">↑</button>
+            <button class="control-btn" id="upright-btn">↗</button>
+            <button class="control-btn" id="left-btn">←</button>
+            <span></span>
+            <button class="control-btn" id="right-btn">→</button>
+            <button class="control-btn" id="downleft-btn">↙</button>
+            <button class="control-btn" id="down-btn">↓</button>
+            <button class="control-btn" id="downright-btn">↘</button>
+        </div>
+
+        <div class="collection-counter" id="collection-counter">
+            🎀 Memories found: <span id="collection-count">0</span>/<span id="collection-total">24</span>
+        </div>
+
+        <div class="memory-popup" id="memory-popup">
+            <div class="memory-popup-content">
+                <h2 id="memory-title">Can you answer this, my love?</h2>
+                <p id="memory-question"></p>
+                <input type="text" id="memory-answer" placeholder="Type your answer..." autocomplete="off" autocapitalize="off" spellcheck="false">
+                <div class="memory-buttons">
+                    <button id="close-memory-popup" class="secondary">Not now</button>
+                    <button id="hint-memory" class="secondary" style="display:none">💡 Hint</button>
+                    <button id="submit-memory-answer">Submit</button>
+                </div>
+                <p id="memory-feedback"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The surprise -->
+    <section class="surprise-screen" id="surprise-screen">
+        <div class="sparkle-field" aria-hidden="true"></div>
+        <div class="surprise-content">
+            <p class="game-label">YOU UNLOCKED IT</p>
+            <h1>HAPPY BIRTHDAY, MY LOVE!</h1>
+            <p class="surprise-sub">24 / 24 memories found</p>
+            <div class="video-frame">
+                <video id="surprise-video" controls playsinline preload="metadata">
+                    <source id="surprise-source" src="assets/surprise/birthday.mp4" type="video/mp4">
+                </video>
+                <div class="video-placeholder" id="video-placeholder">
+                    <span>🎬</span>
+                    <p>Your video goes here</p>
+                    <small>Save it as assets/surprise/birthday.mp4</small>
+                </div>
+            </div>
+            <button id="back-to-forest" class="ghost-btn">↩ Back to the forest</button>
+        </div>
+    </section>
+
+</main>
+<div class="flash" id="flash"></div>
+<script src="js/dialogue.js"></script>
+<script src="js/areas.js"></script>
+<script src="js/masks.js"></script>
+<script src="js/obstacles.js"></script>
+<script src="js/frames.js"></script>
+<script src="js/memories.js"></script>
+<script src="js/main.js"></script>
+</body>
+
+</html>

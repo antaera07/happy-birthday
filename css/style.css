@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap');
+/* Page setup */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #101526;
+    color: white;
+    h1, h2, h3 {
+    font-family: 'Cinzel', serif;
+}
+}
+
+/* Welcome screen */
+
+.welcome-screen {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    padding: 20px;
+}
+
+/* Content */
+
+.welcome-content {
+    max-width: 700px;
+}
+
+.game-label {
+    color: #9ba9ff;
+    font-size: 13px;
+    letter-spacing: 4px;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: clamp(35px, 7vw, 65px);
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+}
+
+.game-description {
+    color: #b8bfd1;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 35px;
+}
+
+/* Start button */
+
+#start-button {
+    background-color: #6878ff;
+    color: white;
+
+    border: none;
+    padding: 16px 35px;
+
+    font-size: 14px;
+    letter-spacing: 2px;
+
+    border-radius: 8px;
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+#start-button:hover {
+    background-color: #8793ff;
+    transform: scale(1.05);
+}
+
+/* Footer */
+
+.footer-text {
+    color: #68738e;
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-top: 45px;
+}
+/* Character Selection Screen */
+
+.character-screen {
+    min-height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #222344, #34345e, #292344);
+}
+
+.character-content {
+    max-width: 1000px;
+    width: 100%;
+}
+
+.character-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin: 45px 0;
+}
+
+.character-card {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(169, 185, 245, 0.25);
+    border-radius: 15px;
+    padding: 25px 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.character-card:hover {
+    transform: translateY(-8px);
+    background: rgba(169, 185, 245, 0.15);
+}
+
+.character-placeholder {
+    font-size: 55px;
+    margin-bottom: 20px;
+}
+
+.character-card h2 {
+    font-size: 17px;
+    margin-bottom: 10px;
+    color: #d8c9f5;
+}
+
+.character-card p {
+    font-size: 13px;
+    color: #b8bfd1;
+    line-height: 1.5;
+}
+
+.character-card.selected {
+    border: 2px solid #d8a9d8;
+    background: rgba(216, 169, 216, 0.15);
+    box-shadow: 0 0 20px rgba(216, 169, 216, 0.2);
+}
+
+#continue-button {
+    background: #7774b8;
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    border-radius: 8px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#continue-button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+#continue-button:not(:disabled):hover {
+    background: #a9b9f5;
+    color: #222344;
+}
+
+/* Mobile layout */
+
+@media (max-width: 700px) {
+    .character-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+/* Character card sprites */
+.card-sprite {
+    height: 130px;
+    width: auto;
+    margin-bottom: 14px;
+    filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.45));
+}
